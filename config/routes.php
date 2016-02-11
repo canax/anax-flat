@@ -1,5 +1,6 @@
 <?php
 
+/*
 $app->router->add("", function () use ($app) {
 
     $app->theme->setTitle("Home");
@@ -65,31 +66,22 @@ $app->router->add("guide/*", function () use ($app) {
 
 });
 
+*/
+
 
 
 $app->router->add("*", function () use ($app) {
 
-//    $app->pageContent->get();
-/*
-    $route = $app->request->getRoute();
-
-    if (!isset($pages[$route])) {
-        throw new \Anax\Exception\NotFoundException("The documentation page does not exists.");
-    }
-
-    $title = $pages[$route]["title"];
-    $file  = isset($pages[$route]["file"])
-        ? $pages[$route]["file"]
-        : $route . ".md";
-
-    $app->theme->setTitle($title);
-
-    $content = $app->fileContent->get($file);
-    $content = $app->textFilter->doFilter($content, "shortcode, markdown");
+    $content = $app->fileContent->get("about");
 
     $app->views->add("default/article", [
-        "content" => $content,
+        "content" => $content
     ]);
-*/
+
+    list($title, $content, $toc) = $app->pageContent->getContentForRoute();
+
+    $app->theme->setTitle($title);
+    
+    $app->views->add("default/article", ["content" => $content]);
 
 });

@@ -41,3 +41,11 @@ help:
 	@echo "make [target] ..."
 	@echo "target:"
 	@egrep "^# target:" Makefile | sed 's/# target: / /g'
+
+
+
+# target: cache - Create the cache directory.
+.PHONY: cache
+cache:
+	mkdir cache
+	chmod 777 cache

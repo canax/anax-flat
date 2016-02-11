@@ -6,15 +6,15 @@
 return [
 
     // Use for styling the menu
-    'basepath' => ANAX_APP_PATH . '/content',
+    "basepath" => ANAX_APP_PATH . "/content",
 
     // Default options for textfilter
-    'textfilter' => 'shortcode, markdown',
+    "textfilter" => "shortcode, markdown",
 
     // Default view
-    'view' => 'default/article',
+    "view" => "default/article",
 
     // Filter to load content
-    'pattern' => '*_*.md',
+    "pattern" => "*.md",
 
 ];
