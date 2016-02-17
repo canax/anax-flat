@@ -6,77 +6,70 @@
 return [
 
     /**
-     * Settings for which theme to use, theme directory is found by path and name.
-     *
-     * path: where is the base path to the theme directory,
-     *       end without a slash.
-     * name: name of the theme is mapped to a directory right below the path.
+     * Base view to start render page from.
      */
-    "settings" => [
-        "path" => ANAX_APP_PATH . "/theme",
-        "name" => "anax-base",
+    "view" => [
+        "template" => "anax-base/index",
+
+        "data" => [
+            // General
+            "htmlClass"     => [],
+            "bodyClass"     => [],
+            "lang"          => "sv",
+            "charset"       => "utf-8",
+            "title_append"  => " | Anax a web template",
+            "favicon"       => "favicon.ico",
+
+            // Style and stylesheets
+            "stylesheets" => ["css/anax-base.min.css"],
+            "styleInline" => null,
+
+            // JavaScript
+            "javascripts" => [],
+        ],
     ],
 
-    
+
+
     /**
-     * Add default views.
+     * Add default views to always include.
      */
     "views" => [
         [
-            "region"   => "header",
+            "region" => "header",
             "template" => "default/header",
-            "data"     => [],
-            "sort"     => -1
+            "data" => [
+                "homeLink"      => "",
+                "siteLogo"      => "img/anax.png",
+                "siteLogoAlt"   => "Anax Logo",
+                "siteTitle"     => "Anax PHP framework",
+                "siteSlogan"    => "Reusable modules for web development"
+            ],
+            "sort" => -1
         ],
         [
-            "region"   => "navbar",
-            "template" => [
-                "callback" => function () {
-                    return $this->di->navbar->create();
-                },
-            ],
+            "region" => "navbar",
+            "template" => "default/navbar",
             "data" => [],
             "sort" => -1
         ],
         [
-            "region"   => "footer",
+            "region" => "footer",
             "template" => "default/footer",
-            "data"     => [],
-            "sort"     => -1
+            "data" => [
+                "copyrightNotice" => "Copyright (c) 2013-2016 Mikael Roos (mos@dbwebb.se)",
+                "linkToAnaxGitHub" => "https://github.com/mosbth/anax",
+                "linkTextToAnaxGitHub" => "Anax på GitHub",
+            ],
+            "sort" => -1
         ],
-    ],
-
-
-    /**
-     * Data to extract and send as variables to the main template file.
-     */
-    "data" => [
-
-        // Language for this page.
-        "lang" => "en",
-
-        // Append this value to each <title>
-        "title_append" => " | Anax flat",
-
-        // Stylesheets
-        "stylesheets" => ["css/anax-base.min.css"],
-
-        // Inline style
-        "style" => null,
-
-        // Favicon
-        //"favicon" => "favicon.ico",
-
-        // Path to modernizr or null to disable
-        //"modernizr" => "js/modernizr.js",
-
-        // Path to jquery or null to disable
-        //"jquery" => "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js",
-
-        // Array with javscript-files to include
-        "javascript_include" => [],
-
-        // Use google analytics for tracking, set key or null to disable
-        "google_analytics" => null,
+        [
+            "region" => "body-end",
+            "template" => "default/google-analytics",
+            "data" => [
+                "account" => null,
+            ],
+            "sort" => -1
+        ],
     ],
 ];
