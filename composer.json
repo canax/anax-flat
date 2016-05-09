@@ -17,9 +17,17 @@
         "issues": "https://github.com/mosbth/anax-flat/issues"
     },
     "require": {
-        "php": ">=5.4",
-        "mos/anax": "dev-master",
-        "mos/ctextfilter": "dev-master",
-        "mos/cform": "2.x-dev"
+        "mos/anax": "2.5.*",
+        "mos/ctextfilter": "1.2.*",
+        "geshi/geshi": "dev-master",
+        "mos/cimage": "0.7.*"
+    },
+    "suggest": {
+        "ext-yaml": "*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }

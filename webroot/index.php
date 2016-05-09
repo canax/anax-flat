@@ -14,7 +14,11 @@ $di  = new \Anax\DI\CDIFactoryDefault();
 $app = new \Anax\Kernel\CAnax($di);
 
 // The routes are defined in a separate file
-require ANAX_APP_PATH . "/config/routes.php";
+$routes = ANAX_INSTALL_PATH . "/config/routes.php";
+if (is_file(ANAX_APP_PATH . "/config/routes.php")) {
+    $routes = ANAX_APP_PATH . "/config/routes.php";
+}
+require $routes;
 
 // Lets check if the current request matches a route and if so
 // render a response.
