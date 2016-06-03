@@ -17,7 +17,7 @@
         "issues": "https://github.com/mosbth/anax-flat/issues"
     },
     "require": {
-        "mos/anax": "2.5.*",
+        "mos/anax": "2.5.*-dev",
         "mos/ctextfilter": "1.2.*",
         "geshi/geshi": "dev-master",
         "mos/cimage": "0.7.*"

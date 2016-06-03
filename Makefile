@@ -18,21 +18,81 @@ SSL_APACHE_CONF = /etc/letsencrypt/options-ssl-apache.conf
 SSL_PEM_BASE 	= /etc/letsencrypt/live/$(WWW_SITE)
 
 # Theme
-LESS 		 = theme/style_grillcon.less
+LESS 		 = theme/style_anax-flat.less
 LESS_OPTIONS = --strict-imports --include-path=theme/mos-theme/style/
 FONT_AWESOME = theme/mos-theme/style/font-awesome/fonts/
 
+# Colors
+NO_COLOR		= \033[0m
+TARGET_COLOR	= \033[32;01m
+OK_COLOR		= \033[32;01m
+ERROR_COLOR		= \033[31;01m
+WARN_COLOR		= \033[33;01m
+ACTION			= $(TARGET_COLOR)--> 
 
 
-# target: help - Displays help.
+
+# target: help        - Displays help.
 .PHONY:  help
 help:
-	@echo "Displaying help for this Makefile."
+	@echo "$(ACTION)Displaying help for this Makefile.$(NO_COLOR)"
 	@echo "Usage:"
 	@echo " make [target] ..."
 	@echo "target:"
 	@egrep "^# target:" Makefile | sed 's/# target: / /g'
 
+
+
+# target: site-build  - Build the site by creating dirs and copying files.
+.PHONY: site-build
+site-build:
+	@echo "$(ACTION)Copy default structure from Anax Flat$(NO_COLOR)"
+	rsync -a vendor/mos/anax-flat/htdocs/ htdocs/
+	rsync -a vendor/mos/anax-flat/config/ config/
+	rsync -a vendor/mos/anax-flat/content/ content/
+
+	@echo "$(ACTION)Copy from CImage$(NO_COLOR)"
+	install -d htdocs/cimage
+	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
+	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
+
+	@echo "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
+	install --directory --mode 777 cache/cimage cache/anax
+
+
+
+# target: prepare-build - Clear and recreate the build directory.
+.PHONY: prepare-build
+prepare-build:
+	@echo "$(ACTION)Preparing the build directory$(NO_COLOR)"
+	rm -rf build
+	install -d build/css build/lint
+
+
+
+# target: less - Build less stylesheet and update the site with it.
+.PHONY: less
+less: prepare-build
+	@echo "$(ACTION)Compiling LESS stylesheet$(NO_COLOR)"
+	lessc $(LESS_OPTIONS) $(LESS) build/css/style.css
+	lessc --clean-css $(LESS_OPTIONS) $(LESS) build/css/style.min.css
+	cp build/css/style.min.css htdocs/css/style.min.css
+
+	rsync -a $(FONT_AWESOME) htdocs/fonts/
+
+
+
+# target: less-lint - Lint the less stylesheet.
+.PHONY: less-lint
+less-lint: less
+	@echo "$(ACTION)Linting LESS/CSS stylesheet$(NO_COLOR)"
+	lessc --lint $(LESS_OPTIONS) $(LESS) > build/lint/style.less
+	- csslint build/css/style.css > build/lint/style.css
+	ls -l build/lint/
+
+
+
+# BELOW TO BE CHECKED OR REMOVED
 
 
 # target: update - Update codebase and publish by clearing the cache.
@@ -93,17 +153,6 @@ submodule-update:
 
 
 
-#
-# Build
-#
-.PHONY: prepare-build
-
-prepare-build:
-	rm -rf build
-	install -d build/css build/lint
-
-
-
 # target: less-update - Build less and update site.
 .PHONY: less-update
 less-update: less local-publish
@@ -116,52 +165,6 @@ less-update-clear: less local-publish-clear
 
 
 
-# target: less - Build less stylesheet and update the site with it.
-.PHONY: less
-less: prepare-build
-	#lessc $(LESS_OPTIONS) $(LESS) build/css/style.css
-	lessc --clean-css $(LESS_OPTIONS) $(LESS) build/css/style.min.css
-	#cp build/css/style.css htdocs/css/style.css
-	cp build/css/style.min.css htdocs/css/style.min.css
-
-	rsync -av $(FONT_AWESOME) htdocs/fonts/
-
-
-
-#
-# Lint
-#
-.PHONY: lint
-
-lint: less
-	lessc --lint $(LESS) > build/lint/style.less
-	- csslint build/css/style.css > build/lint/style.css
-	ls -l build/lint/
-
-
-
-# target: site-build - Build site structure from codebase.
-.PHONY: site-build
-site-build:
-	# Copy Anax images
-	#rsync -av vendor/mos/anax/webroot/img/ htdocs/img/
-
-	# Copy from CImage
-	install -d htdocs/cimage
-	rsync -av vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
-	rsync -av vendor/mos/cimage/icc/ htdocs/cimage/icc/
-	#rsync -av vendor/mos/cimage/webroot/img/ htdocs/img/cimage/
-
-	# Copy from mos-theme
-	#install -d htdocs/js/mos-theme
-	#rsync -av theme/mos-theme/js/ htdocs/js/mos-theme/
-
-	# Make cache parts writable
-	install --directory --mode 777 cache/cimage cache/anax
-	rsync -av "./cache/" $(LOCAL_HTDOCS)/cache/
-
-	# Sync to virtual host dir
-	rsync -av --exclude old --exclude .git --exclude cache/ --delete "./" $(LOCAL_HTDOCS)
 
 
 
