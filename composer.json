@@ -19,8 +19,8 @@
     "require": {
         "mos/anax": "^2.5",
         "mos/ctextfilter": "^1.2",
-        "geshi/geshi": "dev-master",
-        "mos/cimage": "^0.7"
+        "mos/cimage": "^0.7",
+        "michelf/php-smartypants": "1.6.x-dev"
     },
     "suggest": {
         "ext-yaml": "*"
