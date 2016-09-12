@@ -159,16 +159,16 @@
         },
         {
             "name": "mos/anax",
-            "version": "v2.5.9",
+            "version": "v2.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mosbth/anax.git",
-                "reference": "bed3f4622e25dc6a580b2d4882864ac4a4e29090"
+                "reference": "37bc16693c49266ae37b276f92a6e7088b6def38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mosbth/anax/zipball/bed3f4622e25dc6a580b2d4882864ac4a4e29090",
-                "reference": "bed3f4622e25dc6a580b2d4882864ac4a4e29090",
+                "url": "https://api.github.com/repos/mosbth/anax/zipball/37bc16693c49266ae37b276f92a6e7088b6def38",
+                "reference": "37bc16693c49266ae37b276f92a6e7088b6def38",
                 "shasum": ""
             },
             "require": {
@@ -209,7 +209,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2016-09-12 06:59:45"
+            "time": "2016-09-12 07:37:37"
         },
         {
             "name": "mos/cimage",
