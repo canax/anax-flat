@@ -5,27 +5,30 @@
  */
 return [
 
-    // Use for styling the menu
-    "wrapper" => null,
-    "class" => "rm-default rm-desktop",
- 
-    // Here comes the menu structure
-    "items" => [
+    // Name of this menu
+    "navbarTop" => [
+        // Use for styling the menu
+        "wrapper" => null,
+        "class" => "rm-default rm-desktop",
+     
+        // Here comes the menu structure
+        "items" => [
 
-        "report" => [
-            "text"  => t("Report"),
-            "url"   => $this->di->get("url")->create("report"),
-            "title" => t("Reports from kmom assignments"),
-            "mark-if-parent" => true,
-        ],
+            "report" => [
+                "text"  => t("Report"),
+                "url"   => $this->di->get("url")->create("report"),
+                "title" => t("Reports from kmom assignments"),
+                "mark-if-parent" => true,
+            ],
 
-        "about" => [
-            "text"  => t("About"),
-            "url"   => $this->di->get("url")->create("about"),
-            "title" => t("About this website")
+            "about" => [
+                "text"  => t("About"),
+                "url"   => $this->di->get("url")->create("about"),
+                "title" => t("About this website")
+            ],
         ],
     ],
- 
+
 
 
     /**
