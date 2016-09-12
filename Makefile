@@ -120,7 +120,7 @@ local-publish:
 .PHONY: local-cache-clear
 local-cache-clear:
 	-sudo rm -f $(LOCAL_HTDOCS)/cache/anax/*
-
+	-rm -f cache/anax/*
 
 
 #
@@ -165,21 +165,11 @@ less-update-clear: less local-publish-clear
 
 
 
-
-
-
 # target: etc-hosts - Create a entry in the /etc/hosts for local access.
 .PHONY: etc-hosts
 etc-hosts:
 	echo "127.0.0.1 $(WWW_LOCAL)" | sudo bash -c 'cat >> /etc/hosts'
 	@tail -1 /etc/hosts
-
-
-
-# target: create-local-structure - Create needed local directory structure.
-.PHONY: create-local-structure
-create-local-structure:
-	install --directory $(HOME)/htdocs/$(WWW_SITE)/htdocs
 
 
 
@@ -203,7 +193,7 @@ ssl-cert-update:
 
 # target: install-fresh - Do a fresh installation of a new server.
 .PHONY: install-fresh
-install-fresh: create-local-structure etc-hosts virtual-host update
+install-fresh: etc-hosts virtual-host update
 
 
 
@@ -252,6 +242,7 @@ endef
 export VIRTUAL_HOST_80_WWW
 
 virtual-host:
+	install --directory $(HOME)/htdocs/$(WWW_SITE)/htdocs
 	echo "$$VIRTUAL_HOST_80" | sudo bash -c 'cat > /etc/apache2/sites-available/$(WWW_SITE).conf'
 	echo "$$VIRTUAL_HOST_80_WWW" | sudo bash -c 'cat > /etc/apache2/sites-available/www.$(WWW_SITE).conf'
 	sudo a2ensite $(WWW_SITE) www.$(WWW_SITE)
