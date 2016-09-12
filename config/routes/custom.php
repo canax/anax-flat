@@ -4,6 +4,11 @@
  * The variabel $app relates to $this.
  */
 
+// Support theme selector by adding class to html element
+if ($app->session->has("theme")) {
+    $app->theme->appendToVariable("htmlClass", $app->session->get("theme"));
+}
+
 
 
 /**
@@ -11,11 +16,5 @@
  */
 $app->router->add("theme-selector", function () use ($app) {
     $app->theme->setTitle("Set theme");
-    //$app->theme->setVariable("htmlClass", "moped");
     $app->views->add("theme-selector/index");
-    
-    //die("theme");
-    
-    // Create content
-    // Add to view
 });
