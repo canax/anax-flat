@@ -38,6 +38,7 @@ site-build:
 	rsync -a vendor/mos/anax-flat/htdocs/ htdocs/
 	rsync -a vendor/mos/anax-flat/config/ config/
 	rsync -a vendor/mos/anax-flat/content/ content/
+	rsync -a vendor/mos/anax-flat/views/ views/
 
 	@echo "$(ACTION)Copy from CImage$(NO_COLOR)"
 	install -d htdocs/cimage
