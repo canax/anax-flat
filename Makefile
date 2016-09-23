@@ -65,7 +65,7 @@ less: prepare-build
 	@echo $(call HELPTEXT,$@)
 	lessc $(LESS_OPTIONS) $(LESS) build/css/style.css
 	lessc --clean-css $(LESS_OPTIONS) $(LESS) build/css/style.min.css
-	cp build/css/style.min.css htdocs/css/style.min.css
+	cp build/css/style.min.css htdocs/css/default.min.css
 
 	rsync -a $(FONT_AWESOME) htdocs/fonts/
 
