@@ -9,21 +9,20 @@ LESS 		 = theme/style_anax-flat.less
 LESS_OPTIONS = --strict-imports --include-path=theme/mos-theme/style/
 FONT_AWESOME = theme/mos-theme/style/font-awesome/fonts/
 
-# Colors
-NO_COLOR		= \033[0m
-TARGET_COLOR	= \033[32;01m
-OK_COLOR		= \033[32;01m
-ERROR_COLOR		= \033[31;01m
-WARN_COLOR		= \033[33;01m
-ACTION			= $(TARGET_COLOR)--> 
-HELPTEXT 		= "$(ACTION)" `egrep "^\# target: $(1) " Makefile | sed "s/\# target: $(1)[ ]\+- / /g"` "$(NO_COLOR)"
+# Colors and helptext
+NO_COLOR	= \033[0m
+ACTION		= \033[32;01m
+OK_COLOR	= \033[32;01m
+ERROR_COLOR	= \033[31;01m
+WARN_COLOR	= \033[33;01m
+HELPTEXT 	= /bin/echo -e "$(ACTION)--->" `egrep "^\# target: $(1) " Makefile | sed "s/\# target: $(1)[ ]\+- / /g"` "$(NO_COLOR)"
 
 
 
 # target: help                - Displays help.
 .PHONY:  help
 help:
-	@echo $(call HELPTEXT,$@)
+	@$(call HELPTEXT,$@)
 	@echo "Usage:"
 	@echo " make [target] ..."
 	@echo "target:"
@@ -34,7 +33,7 @@ help:
 # target: site-build          - Copy default structure from Anax Flat.
 .PHONY: site-build
 site-build:
-	@echo $(call HELPTEXT,$@)
+	@$(call HELPTEXT,$@)
 	rsync -a vendor/mos/anax-flat/htdocs/ htdocs/
 	rsync -a vendor/mos/anax-flat/config/ config/
 	rsync -a vendor/mos/anax-flat/content/ content/
@@ -53,7 +52,7 @@ site-build:
 # target: prepare-build       - Clear and recreate the build directory.
 .PHONY: prepare-build
 prepare-build:
-	@echo $(call HELPTEXT,$@)
+	@$(call HELPTEXT,$@)
 	rm -rf build
 	install -d build/css build/lint
 
@@ -62,7 +61,7 @@ prepare-build:
 # target: less                - Compiling LESS stylesheet.
 .PHONY: less
 less: prepare-build
-	@echo $(call HELPTEXT,$@)
+	@$(call HELPTEXT,$@)
 	lessc $(LESS_OPTIONS) $(LESS) build/css/style.css
 	lessc --clean-css $(LESS_OPTIONS) $(LESS) build/css/style.min.css
 	cp build/css/style.min.css htdocs/css/default.min.css
@@ -74,7 +73,7 @@ less: prepare-build
 # target: less-lint           - Linting LESS/CSS stylesheet.
 .PHONY: less-lint
 less-lint: less
-	@echo $(call HELPTEXT,$@)
+	@$(call HELPTEXT,$@)
 	lessc --lint $(LESS_OPTIONS) $(LESS) > build/lint/style.less
 	- csslint build/css/style.css > build/lint/style.css
 	ls -l build/lint/
