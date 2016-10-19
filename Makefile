@@ -5,9 +5,11 @@
 #
 
 # Theme
-LESS 		 = theme/style_anax-flat.less
-LESS_OPTIONS = --strict-imports --include-path=theme/mos-theme/style/
-FONT_AWESOME = theme/mos-theme/style/font-awesome/fonts/
+#LESS 		 = theme/style_anax-flat.less
+#LESS_OPTIONS = --strict-imports --include-path=theme/mos-theme/style/
+#FONT_AWESOME = theme/font-awesome/fonts/
+LESS 		 = theme/style.less
+LESS_OPTIONS = --strict-imports --include-path=theme/modules/
 
 # Colors and helptext
 NO_COLOR	= \033[0m
@@ -39,12 +41,12 @@ site-build:
 	rsync -a vendor/mos/anax-flat/content/ content/
 	rsync -a vendor/mos/anax-flat/view/ view/
 
-	@echo "$(ACTION)Copy from CImage$(NO_COLOR)"
+	@/bin/echo -e "$(ACTION)Copy from CImage$(NO_COLOR)"
 	install -d htdocs/cimage
 	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
 	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
-	@echo "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
+	@/bin/echo -e "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
 	install --directory --mode 777 cache/cimage cache/anax
 
 
@@ -64,9 +66,10 @@ less: prepare-build
 	@$(call HELPTEXT,$@)
 	lessc $(LESS_OPTIONS) $(LESS) build/css/style.css
 	lessc --clean-css $(LESS_OPTIONS) $(LESS) build/css/style.min.css
-	cp build/css/style.min.css htdocs/css/default.min.css
+	cp build/css/style.min.css htdocs/css/
+	@#cp build/css/style.css htdocs/css/
 
-	rsync -a $(FONT_AWESOME) htdocs/fonts/
+	@#rsync -a $(FONT_AWESOME) htdocs/fonts/
 
 
 
