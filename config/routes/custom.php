@@ -7,6 +7,8 @@
 // Support theme selector by adding class to html element
 if ($app->session->has("theme")) {
     $app->theme->appendToVariable("htmlClass", $app->session->get("theme"));
+} else {
+    $app->theme->appendToVariable("htmlClass", "default");
 }
 
 
