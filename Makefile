@@ -10,6 +10,8 @@
 #FONT_AWESOME = theme/font-awesome/fonts/
 LESS 		 = theme/style.less
 LESS_OPTIONS = --strict-imports --include-path=theme/modules/
+NPMBIN       = theme/node_modules/.bin
+
 
 # Colors and helptext
 NO_COLOR	= \033[0m
@@ -36,6 +38,8 @@ help:
 .PHONY: site-build
 site-build:
 	@$(call HELPTEXT,$@)
+
+	@/bin/echo -e "$(ACTION)Copy from anax-flat$(NO_COLOR)"
 	rsync -a vendor/mos/anax-flat/htdocs/ htdocs/
 	rsync -a vendor/mos/anax-flat/config/ config/
 	rsync -a vendor/mos/anax-flat/content/ content/
@@ -48,6 +52,21 @@ site-build:
 
 	@/bin/echo -e "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
 	install --directory --mode 777 cache/cimage cache/anax
+
+
+
+# target: site-update         - Make composer update and copy latest files.
+.PHONY: site-update
+site-update:
+	@$(call HELPTEXT,$@)
+	composer update
+
+	@/bin/echo -e "$(ACTION)Copy Makefile$(NO_COLOR)"
+	rsync -av vendor/mos/anax-flat/Makefile
+
+	@/bin/echo -e "$(ACTION)Copy from CImage$(NO_COLOR)"
+	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
+	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
 
 
@@ -64,8 +83,8 @@ prepare-build:
 .PHONY: less
 less: prepare-build
 	@$(call HELPTEXT,$@)
-	lessc $(LESS_OPTIONS) $(LESS) build/css/style.css
-	lessc --clean-css $(LESS_OPTIONS) $(LESS) build/css/style.min.css
+	$(NPMBIN)/lessc $(LESS_OPTIONS) $(LESS) build/css/style.css
+	$(NPMBIN)/lessc --clean-css $(LESS_OPTIONS) $(LESS) build/css/style.min.css
 	cp build/css/style.min.css htdocs/css/
 	@#cp build/css/style.css htdocs/css/
 
@@ -77,6 +96,6 @@ less: prepare-build
 .PHONY: less-lint
 less-lint: less
 	@$(call HELPTEXT,$@)
-	lessc --lint $(LESS_OPTIONS) $(LESS) > build/lint/style.less
-	- csslint build/css/style.css > build/lint/style.css
+	$(NPMBIN)/lessc --lint $(LESS_OPTIONS) $(LESS) > build/lint/style.less
+	- $(NPMBIN)/csslint build/css/style.css > build/lint/style.css
 	ls -l build/lint/
