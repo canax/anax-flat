@@ -2,6 +2,14 @@ Revision history
 =======================================
 
 
+v1.0.14 (2016-10-21)
+---------------------------------------
+
+* Enable Makefile to enable compile less style from theme dir using npmbin path.
+* Add target site-update to Makefile.
+* Updated theme selector.
+
+
 v1.0.13 (2016-10-19)
 ---------------------------------------
 
