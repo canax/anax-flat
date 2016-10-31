@@ -159,16 +159,16 @@
         },
         {
             "name": "mos/anax",
-            "version": "v2.5.12",
+            "version": "v2.5.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mosbth/anax.git",
-                "reference": "0ec421107409ec23f5b04bc75b9e7c7189e09e28"
+                "reference": "81e1dd79c0d2392af67d1c70a1502caca2216697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mosbth/anax/zipball/0ec421107409ec23f5b04bc75b9e7c7189e09e28",
-                "reference": "0ec421107409ec23f5b04bc75b9e7c7189e09e28",
+                "url": "https://api.github.com/repos/mosbth/anax/zipball/81e1dd79c0d2392af67d1c70a1502caca2216697",
+                "reference": "81e1dd79c0d2392af67d1c70a1502caca2216697",
                 "shasum": ""
             },
             "require": {
@@ -209,7 +209,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2016-10-14 19:49:35"
+            "time": "2016-10-18 17:45:46"
         },
         {
             "name": "mos/cimage",
@@ -271,16 +271,16 @@
         },
         {
             "name": "mos/ctextfilter",
-            "version": "v1.2.14",
+            "version": "v1.2.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mosbth/ctextfilter.git",
-                "reference": "8e3cb8fec7cb74f514c30a9a8f19b8e8a2e7c5b5"
+                "reference": "6ebbddf8a7c28db2a5fdfe9ed604f144731a342f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mosbth/ctextfilter/zipball/8e3cb8fec7cb74f514c30a9a8f19b8e8a2e7c5b5",
-                "reference": "8e3cb8fec7cb74f514c30a9a8f19b8e8a2e7c5b5",
+                "url": "https://api.github.com/repos/mosbth/ctextfilter/zipball/6ebbddf8a7c28db2a5fdfe9ed604f144731a342f",
+                "reference": "6ebbddf8a7c28db2a5fdfe9ed604f144731a342f",
                 "shasum": ""
             },
             "require": {
@@ -328,7 +328,7 @@
                 "markdown",
                 "shortcode"
             ],
-            "time": "2016-10-14 20:04:04"
+            "time": "2016-10-18 14:07:21"
         },
         {
             "name": "scrivo/highlight.php",

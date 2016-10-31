@@ -2,6 +2,13 @@ Revision history
 =======================================
 
 
+v1.0.15* (2016-10-31)
+---------------------------------------
+
+* Add makefile `Makefile-dev` for dev environment.
+* Enable local dev environment to make it easier to improve and debug Anax Flat.
+
+
 v1.0.14 (2016-10-21)
 ---------------------------------------
 
