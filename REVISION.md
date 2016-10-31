@@ -5,6 +5,7 @@ Revision history
 v1.0.15* (2016-10-31)
 ---------------------------------------
 
+* Add YAML implementation through `symfony/yaml`.
 * Makefile help should work independant of filename.
 * Fix incoming url that has encoded characters.
 * Add makefile `Makefile-dev` for dev environment.

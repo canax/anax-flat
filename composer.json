@@ -19,10 +19,12 @@
     "require": {
         "mos/anax": "^2.5",
         "mos/ctextfilter": "^1.2",
-        "mos/cimage": "^0.7"
+        "mos/cimage": "^0.7",
+        "symfony/yaml": "^3.1"
     },
     "suggest": {
-        "ext-yaml": "*"
+        "ext-yaml": "*",
+        "mustangostang/spyc": "^0.6"
     },
     "extra": {
         "branch-alias": {

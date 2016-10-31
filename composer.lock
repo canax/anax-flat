@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a7d0d3917aa1cd799bc18bcdb998ea7d",
-    "content-hash": "02ef5f0b4e2ed2d98aba3dc5d6d0aaa2",
+    "hash": "46fabd55d99367551f389f7bb3720106",
+    "content-hash": "fa8245428f2880faeba4f8125a1b1356",
     "packages": [
         {
             "name": "ezyang/htmlpurifier",
@@ -271,16 +271,16 @@
         },
         {
             "name": "mos/ctextfilter",
-            "version": "v1.2.15",
+            "version": "v1.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mosbth/ctextfilter.git",
-                "reference": "6ebbddf8a7c28db2a5fdfe9ed604f144731a342f"
+                "reference": "4c5b2bd3f76798665e2dc7207281cb4882098692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mosbth/ctextfilter/zipball/6ebbddf8a7c28db2a5fdfe9ed604f144731a342f",
-                "reference": "6ebbddf8a7c28db2a5fdfe9ed604f144731a342f",
+                "url": "https://api.github.com/repos/mosbth/ctextfilter/zipball/4c5b2bd3f76798665e2dc7207281cb4882098692",
+                "reference": "4c5b2bd3f76798665e2dc7207281cb4882098692",
                 "shasum": ""
             },
             "require": {
@@ -292,7 +292,9 @@
             },
             "suggest": {
                 "ext-json": "*",
-                "ext-yaml": "*"
+                "ext-yaml": "*",
+                "mustangostang/spyc": "^0.6",
+                "symfony/yaml": "^3.1"
             },
             "type": "library",
             "extra": {
@@ -328,7 +330,7 @@
                 "markdown",
                 "shortcode"
             ],
-            "time": "2016-10-18 14:07:21"
+            "time": "2016-10-31 12:22:27"
         },
         {
             "name": "scrivo/highlight.php",
@@ -363,6 +365,55 @@
                 "syntax"
             ],
             "time": "2016-01-01 14:08:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v3.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "7ff51b06c6c3d5cc6686df69004a42c69df09e27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/7ff51b06c6c3d5cc6686df69004a42c69df09e27",
+                "reference": "7ff51b06c6c3d5cc6686df69004a42c69df09e27",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-10-24 18:41:13"
         }
     ],
     "packages-dev": [],
