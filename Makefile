@@ -51,7 +51,7 @@ site-build:
 	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
 	@/bin/echo -e "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
-	install --directory --mode 777 cache/cimage cache/anax
+	install -d -m 777 cache/cimage cache/anax
 
 
 
