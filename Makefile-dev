@@ -4,14 +4,22 @@
 #
 #
 
-# Theme
-#LESS 		 = theme/style_anax-flat.less
-#LESS_OPTIONS = --strict-imports --include-path=theme/mos-theme/style/
-#FONT_AWESOME = theme/font-awesome/fonts/
-LESS 		 = theme/style.less
-LESS_OPTIONS = --strict-imports --include-path=theme/modules/
-NPMBIN       = theme/node_modules/.bin
+# Detect OS
+# http://stackoverflow.com/a/14777895/341137
+ifeq ($(OS),Windows_NT)
+    OS = Windows
+else
+    OS = $(shell uname -s)
+endif
 
+# Defaults
+ECHO = echo
+
+# Make adjustments based on OS
+# http://stackoverflow.com/questions/3466166/how-to-check-if-running-in-cygwin-mac-or-linux/27776822#27776822
+ifeq (findstring CYGWIN, $(OS))
+	ECHO = $(ECHO)
+endif
 
 # Colors and helptext
 NO_COLOR	= \033[0m
@@ -25,7 +33,17 @@ WHERE-AM-I = $(CURDIR)/$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 THIS_MAKEFILE := $(call WHERE-AM-I)
 
 # Echo some nice helptext based on the target comment
-HELPTEXT 	= /bin/echo -e "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]\+- / /g"` "$(NO_COLOR)"
+HELPTEXT = echo "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
+
+
+
+# Theme
+#LESS 		 = theme/style_anax-flat.less
+#LESS_OPTIONS = --strict-imports --include-path=theme/mos-theme/style/
+#FONT_AWESOME = theme/font-awesome/fonts/
+LESS 		 = theme/style.less
+LESS_OPTIONS = --strict-imports --include-path=theme/modules/
+NPMBIN       = theme/node_modules/.bin
 
 
 

@@ -4,6 +4,39 @@
 #
 #
 
+# Detect OS
+# http://stackoverflow.com/a/14777895/341137
+ifeq ($(OS),Windows_NT)
+    OS = Windows
+else
+    OS = $(shell uname -s)
+endif
+
+# Defaults
+ECHO = echo
+
+# Make adjustments based on OS
+# http://stackoverflow.com/questions/3466166/how-to-check-if-running-in-cygwin-mac-or-linux/27776822#27776822
+ifeq (findstring CYGWIN, $(OS))
+	ECHO = $(ECHO)
+endif
+
+# Colors and helptext
+NO_COLOR	= \033[0m
+ACTION		= \033[32;01m
+OK_COLOR	= \033[32;01m
+ERROR_COLOR	= \033[31;01m
+WARN_COLOR	= \033[33;01m
+
+# Which makefile am I in?
+WHERE-AM-I = $(CURDIR)/$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
+THIS_MAKEFILE := $(call WHERE-AM-I)
+
+# Echo some nice helptext based on the target comment
+HELPTEXT = echo "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
+
+
+
 # Theme
 #LESS 		 = theme/style_anax-flat.less
 #LESS_OPTIONS = --strict-imports --include-path=theme/mos-theme/style/
@@ -13,23 +46,14 @@ LESS_OPTIONS = --strict-imports --include-path=theme/modules/
 NPMBIN       = theme/node_modules/.bin
 
 
-# Colors and helptext
-NO_COLOR	= \033[0m
-ACTION		= \033[32;01m
-OK_COLOR	= \033[32;01m
-ERROR_COLOR	= \033[31;01m
-WARN_COLOR	= \033[33;01m
-HELPTEXT 	= /bin/echo -e "$(ACTION)--->" `egrep "^\# target: $(1) " Makefile | sed "s/\# target: $(1)[ ]\+- / /g"` "$(NO_COLOR)"
-
-
 
 # target: help                - Displays help.
 .PHONY:  help
 help:
 	@$(call HELPTEXT,$@)
-	@echo "Usage:"
-	@echo " make [target] ..."
-	@echo "target:"
+	@$(ECHO) "Usage:"
+	@$(ECHO) " make [target] ..."
+	@$(ECHO) "target:"
 	@egrep "^# target:" Makefile | sed 's/# target: / /g'
 
 
@@ -39,18 +63,18 @@ help:
 site-build:
 	@$(call HELPTEXT,$@)
 
-	@/bin/echo -e "$(ACTION)Copy from anax-flat$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Copy from anax-flat$(NO_COLOR)"
 	rsync -a vendor/mos/anax-flat/htdocs/ htdocs/
 	rsync -a vendor/mos/anax-flat/config/ config/
 	rsync -a vendor/mos/anax-flat/content/ content/
 	rsync -a vendor/mos/anax-flat/view/ view/
 
-	@/bin/echo -e "$(ACTION)Copy from CImage$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Copy from CImage$(NO_COLOR)"
 	install -d htdocs/cimage
 	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
 	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
-	@/bin/echo -e "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
 	install -d -m 777 cache/cimage cache/anax
 
 
@@ -61,10 +85,10 @@ site-update:
 	@$(call HELPTEXT,$@)
 	composer update
 
-	@/bin/echo -e "$(ACTION)Copy Makefile$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Copy Makefile$(NO_COLOR)"
 	rsync -av vendor/mos/anax-flat/Makefile
 
-	@/bin/echo -e "$(ACTION)Copy from CImage$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Copy from CImage$(NO_COLOR)"
 	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
 	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
@@ -86,9 +110,9 @@ less: prepare-build
 	$(NPMBIN)/lessc $(LESS_OPTIONS) $(LESS) build/css/style.css
 	$(NPMBIN)/lessc --clean-css $(LESS_OPTIONS) $(LESS) build/css/style.min.css
 	cp build/css/style.min.css htdocs/css/
-	@#cp build/css/style.css htdocs/css/
+	#@cp build/css/style.css htdocs/css/
 
-	@#rsync -a $(FONT_AWESOME) htdocs/fonts/
+	#@rsync -a $(FONT_AWESOME) htdocs/fonts/
 
 
 
