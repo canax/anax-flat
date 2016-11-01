@@ -5,20 +5,15 @@
 #
 
 # Detect OS
-# http://stackoverflow.com/a/14777895/341137
-ifeq ($(OS),Windows_NT)
-    OS = Windows
-else
-    OS = $(shell uname -s)
-endif
+OS = $(shell uname -s)
 
 # Defaults
 ECHO = echo
 
 # Make adjustments based on OS
 # http://stackoverflow.com/questions/3466166/how-to-check-if-running-in-cygwin-mac-or-linux/27776822#27776822
-ifeq (findstring CYGWIN, $(OS))
-	ECHO = $(ECHO)
+ifneq (, $(findstring CYGWIN, $(OS)))
+	ECHO = /bin/echo -e
 endif
 
 # Colors and helptext
@@ -33,7 +28,7 @@ WHERE-AM-I = $(CURDIR)/$(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))
 THIS_MAKEFILE := $(call WHERE-AM-I)
 
 # Echo some nice helptext based on the target comment
-HELPTEXT = echo "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
+HELPTEXT = $(ECHO) "$(ACTION)--->" `egrep "^\# target: $(1) " $(THIS_MAKEFILE) | sed "s/\# target: $(1)[ ]*-[ ]* / /g"` "$(NO_COLOR)"
 
 
 
