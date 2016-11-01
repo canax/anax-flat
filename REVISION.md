@@ -5,7 +5,7 @@ Revision history
 v1.0.17 (2016-11-01)
 ---------------------------------------
 
-* Makefile to work on Mac using colors and help.
+* Makefile to work on Mac, Linux, Cygwin using colors and help.
 
 
 v1.0.16 (2016-10-31)
