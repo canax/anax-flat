@@ -53,6 +53,17 @@ help:
 
 
 
+# target: clean-cache         - Clean the cache, might need sudo.
+.PHONY: clean-cache
+clean-cache:
+	@$(call HELPTEXT,$@)
+
+	@$(ECHO) "$(ACTION)Remove and re-create the directory for the cache items$(NO_COLOR)"
+	[ ! -d cache ] || rm -rf cache/ 
+	install -d -m 777 cache/cimage cache/anax
+
+
+
 # target: site-build          - Copy default structure from Anax Flat.
 .PHONY: site-build
 site-build:
@@ -82,10 +93,6 @@ site-update:
 
 	@$(ECHO) "$(ACTION)Copy Makefile$(NO_COLOR)"
 	rsync -av vendor/mos/anax-flat/Makefile
-
-	@$(ECHO) "$(ACTION)Copy from CImage$(NO_COLOR)"
-	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
-	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
 
 
