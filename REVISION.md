@@ -2,9 +2,10 @@ Revision history
 =======================================
 
 
-v1.0.17* (2016-11-01)
+v1.0.18 (2016-11-04)
 ---------------------------------------
 
+* Added target `make clean-cache` to clear out the cache.
 * Makefile-dev to work on Mac, Linux, Cygwin using colors and help.
 
 
