@@ -92,7 +92,7 @@ site-update:
 	composer update
 
 	@$(ECHO) "$(ACTION)Copy Makefile$(NO_COLOR)"
-	rsync -av vendor/mos/anax-flat/Makefile
+	rsync -av vendor/mos/anax-flat/Makefile .
 
 
 
