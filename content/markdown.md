@@ -1,7 +1,7 @@
 Trying out Markdown
 =================================
 
-This is a sample file on how to use Markdown together with Anax.
+This is a sample file on how to use Markdown together with Anax. Review its source to get an understanding of how it works.
 
 
 
@@ -12,7 +12,7 @@ I can link to another document. In the same directory like the file [license.md]
 
 It does not matter in what subdirectory we are. All urls that are relative, will be prepended with the site base url. The base url will be the url to the [`htdocs`]() directory.
 
-You can find a copy of this file in a subdirectory [`example/markdown.md`](example/markdown). Try it out to verify that all urls work in both this document and in the document in the subdirectory.
+You can find a copy of this file in the subdirectory [`content/example/markdown.md`](example/markdown). Try it out to verify that all urls works.
 
 
 
@@ -33,6 +33,35 @@ This is the outcome of the two images.
 ![alt text](img/dbwebbisar.jpg)
 
 <img src="img/dbwebbisar.jpg" alt="alt text">
+
+So, all image sources are relative the htdocs directory.
+
+
+
+Linking to assets/resources {#asset}
+---------------------------------
+
+What if I want to create a link to another asset, for example a php-page, a pdf-document or an image to be displayed in its own tab?
+
+Well, two answers.
+
+1. Use [friendly urls](dbwebb.se/anax/snygga-lankar) and continue to link relative links. The link will be prepended with the baseurl, but now without the part `index.php/`.
+
+1. Tell Anax Flat to ignore the link and leave it as it is. You can do this by prepending the relative url with a `!`. Any link in a document in `content` having a relative link prepended with a `!` will be treated as a link to an asset, instead of a link to a page.
+
+Here is an example of creating a relative link to a image.
+
+```text
+[View full size image](!img/dbwebbisar.jpg)
+<a href="!img/dbwebbisar.jpg">
+    <img src="img/dbwebbisar.jpg" alt="alt text">
+</a>
+```
+
+[View full size image](!img/dbwebbisar.jpg)
+<a href="!img/dbwebbisar.jpg">
+    <img src="img/dbwebbisar.jpg" alt="alt text">
+</a>
 
 
 
