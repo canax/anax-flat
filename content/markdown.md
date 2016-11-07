@@ -12,7 +12,7 @@ I can link to another document. In the same directory like the file [license.md]
 
 It does not matter in what subdirectory we are. All urls that are relative, will be prepended with the site base url. The base url will be the url to the [`htdocs`]() directory.
 
-You can find a copy of this file in the subdirectory [`content/example/markdown.md`](example/markdown). Try it out to verify that all urls works.
+You can find a copy of this file in the subdirectory [`content/example/markdown.md`](example/markdown). Try it out to verify that all urls works the same way as in the [markdown](markdown) copy.
 
 
 
