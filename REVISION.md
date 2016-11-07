@@ -5,6 +5,7 @@ Revision history
 v1.0.21 (2016-11-07)
 ---------------------------------------
 
+* Add prepared files for `.htaccss` supporting friendly urls.
 * Add default file for `htdocs/.htaccess_` friendly urls.
 
 
