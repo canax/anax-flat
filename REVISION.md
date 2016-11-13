@@ -2,6 +2,12 @@ Revision history
 =======================================
 
 
+v1.0.23 (2016-11-14)
+---------------------------------------
+
+* Enhanced theme selector to use several classes and additional stylesheets.
+
+
 v1.0.22 (2016-11-07)
 ---------------------------------------
 

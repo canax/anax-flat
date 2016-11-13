@@ -6,7 +6,22 @@
 
 // Support theme selector by adding class to html element
 if ($app->session->has("theme")) {
-    $app->theme->appendToVariable("htmlClass", $app->session->get("theme"));
+    $theme = $app->session->get("theme");
+
+    if (isset($theme["class"])) {
+        $app->theme->appendToVariable("htmlClass", $theme["class"]);
+    }
+
+    if (isset($theme["stylesheets"])) {
+        $stylesheets = $theme["stylesheets"];
+        if (is_string($stylesheets)) {
+            $app->theme->addStylesheet($stylesheets);
+        } elseif (is_array($stylesheets)) {
+            foreach ($stylesheets as $stylesheet) {
+                $app->theme->addStylesheet($stylesheet);
+            }
+        }
+    }
 } else {
     $app->theme->appendToVariable("htmlClass", "default");
 }
