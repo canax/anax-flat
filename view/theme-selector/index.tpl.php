@@ -15,7 +15,7 @@ $themes = [
     "default"   => [
         "title"      => "Your own selected default theme",
         "class"      => "default",
-        "stylesheets" => []
+        "stylesheets" => ["moped", "mask"]
     ],
     "light"     =>  [
         "title"      => "Very light theme, white, black and nuances of grey",
@@ -55,11 +55,14 @@ $themes = [
 // Check if form was posted with a valid theme
 $output = null;
 if (isset($_POST["theme"]) && array_key_exists($_POST["theme"], $themes)) {
-    $this->di->session->set("theme-message", "<p>Setting theme to "
-        . $_POST["theme"]
-        . ".<p>Theme details are:<br><pre>"
-        . print_r($themes[$_POST["theme"]], 1))
-        . "</pre>";
+    $this->di->session->set(
+        "theme-message",
+        "<p>Setting theme to "
+            . $_POST["theme"]
+            . ".<p>Theme details are:<br><pre>"
+            . print_r($themes[$_POST["theme"]], 1)
+            . "</pre>"
+    );
     $theme = $themes[$_POST["theme"]];
     $theme["key"] = $_POST["theme"];
     $this->di->session->set("theme", $theme);
