@@ -15,7 +15,8 @@ $themes = [
     "default"   => [
         "title"      => "Your own selected default theme",
         "class"      => "default",
-        "stylesheets" => ["moped", "mask"]
+        //"stylesheets" => ["moped", "mask"]
+        "stylesheets" => []
     ],
     "light"     =>  [
         "title"      => "Very light theme, white, black and nuances of grey",
@@ -66,7 +67,7 @@ if (isset($_POST["theme"]) && array_key_exists($_POST["theme"], $themes)) {
     $theme = $themes[$_POST["theme"]];
     $theme["key"] = $_POST["theme"];
     $this->di->session->set("theme", $theme);
-    $this->di->response->redirect($this->di->request->getCurrentUrl());
+    //$this->di->response->redirect($this->di->request->getCurrentUrl());
 }
 
 

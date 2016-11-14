@@ -6,6 +6,7 @@ v1.0.23* (2016-11-14)
 ---------------------------------------
 
 * removing stray ).
+* Fix. Theme chooser can not do a redirect as a template file.
 
 
 v1.0.23 (2016-11-14)
