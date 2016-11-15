@@ -64,9 +64,33 @@ clean-cache:
 
 
 
+# target: cimage-create       - Update and create basis for cimage.
+.PHONY: cimage-create
+
+define CIMAGE_CONF
+<?php
+return [
+	'mode'         => 'development',
+	'image_path'   =>  __DIR__ . '/../img/',
+	'cache_path'   =>  __DIR__ . '/../../cache/cimage/',
+];
+endef
+export CIMAGE_CONF
+
+cimage-create:
+	@$(call HELPTEXT,$@)
+
+	@$(ECHO) "$(ACTION)Copy from CImage$(NO_COLOR)"
+	install -d htdocs/cimage
+	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
+	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
+	@echo "$$CIMAGE_CONF" > htdocs/cimage/imgd_config.php
+
+
+
 # target: site-build          - Copy default structure from Anax Flat.
 .PHONY: site-build
-site-build:
+site-build: cimage-create
 	@$(call HELPTEXT,$@)
 
 	@$(ECHO) "$(ACTION)Copy from anax-flat$(NO_COLOR)"
@@ -74,11 +98,6 @@ site-build:
 	rsync -a vendor/mos/anax-flat/config/ config/
 	rsync -a vendor/mos/anax-flat/content/ content/
 	rsync -a vendor/mos/anax-flat/view/ view/
-
-	@$(ECHO) "$(ACTION)Copy from CImage$(NO_COLOR)"
-	install -d htdocs/cimage
-	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
-	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
 	@$(ECHO) "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
 	install -d -m 777 cache/cimage cache/anax
