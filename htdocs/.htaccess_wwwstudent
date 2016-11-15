@@ -6,6 +6,9 @@
 #
 RewriteEngine on
 
+# Rewrite for cimage
+RewriteRule ^image/(.*)$ cimage/img.php?src=$1 [QSA,NC,L] 
+
 # Igore real files (images, stylesheets etc.)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d

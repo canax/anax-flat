@@ -2,6 +2,13 @@ Revision history
 =======================================
 
 
+v1.0.24* (2016-11-15)
+---------------------------------------
+
+* Adding target cimage-create to Makefile.
+* Adding rewrite-rule for cimage to htaccess samples.
+
+
 v1.0.24 (2016-11-14)
 ---------------------------------------
 
