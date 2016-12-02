@@ -96,4 +96,5 @@ $ECHO "$MSG_DONE installing Anax Flat."
 #dbwebb --version
 
 $ECHO "$MSG_DONE installing, seems to be succesfull."
-$ECHO "$MSG_DOING Open your webbrowser to the htdocs directory to get going."
+$ECHO "Open your web browser to the htdocs directory to see the website."
+$ECHO "Execute 'make' to see what can be done."
