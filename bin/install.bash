@@ -4,34 +4,39 @@
 # bash -c "$(cat install.bash)"
 # bash -c "$(wget -qO- https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/install.bash)"
 #
-TMP="/tmp/$$"
-TARGET="https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2"
-PATH1="/usr/local/bin"
-PATH2="/usr/bin"
-WHERE="$PATH1/dbwebb"
+#TMP="/tmp/$$"
+#TARGET="https://raw.githubusercontent.com/mosbth/dbwebb-cli/master/dbwebb2"
+#PATH1="/usr/local/bin"
+#PATH2="/usr/bin"
+#WHERE="$PATH1/dbwebb"
 
 ECHO="echo -e"
+ECHON="echo -n"
 MSG_DOING="\033[1;37;40m[anax install]\033[0m"
-MSG_DONE="\033[1;37;40mDone\033[0m"
-MSG_WARNING="\033[43mWARNING\033[0m"
+#MSG_DONE="\033[1;37;40mDone\033[0m"
+MSG_DONE="Done"
+#MSG_WARNING="\033[43mWARNING\033[0m"
 MSG_FAILED="\033[0;37;41mFAILED\033[0m"
 
 
 #
 # Check if all tools are available
 #
+function checkTool() {
+    $ECHON "$1 "
+    if ! hash php 2> /dev/null; then
+        $ECHO "$MSG_FAILED Missing $1, install it: $2"
+        exit -1
+    fi
+}
+
 $ECHO "$MSG_DOING Checking for tools..."
-if ! hash composer 2> /dev/null; then
-    $ECHO "$MSG_FAILED Missing composer, install it: https://dbwebb.se/labbmiljo/composer"
-    exit -1
-fi
 
-if ! hash make 2> /dev/null; then
-    $ECHO "$MSG_FAILED Missing make, install it: https://dbwebb.se/labbmiljo/make"
-    exit -1
-fi
+checkTool "php"      "https://dbwebb.se/labbmiljo/php-i-pathen"
+checkTool "composer" "https://dbwebb.se/labbmiljo/composer"
+checkTool "make"     "https://dbwebb.se/labbmiljo/make"
 
-$ECHO "$MSG_DONE checking tools."
+$ECHO "\n$MSG_DONE checking tools."
 
 
 
@@ -84,7 +89,7 @@ $ECHO "$MSG_DONE installing Anax Flat."
 
 
 
-$ECHO "$MSG_DOING Cleaning up."
+#$ECHO "$MSG_DOING Cleaning up."
 #rm $TMP
 
 #echo "[dbwebb] Check what version we have."
