@@ -104,6 +104,14 @@ site-build: cimage-create
 
 
 
+# target: site-build-dbwebb   - Make site look like dbwebb.se.
+.PHONY: site-build-dbwebb
+site-build-dbwebb: site-build
+	@$(call HELPTEXT,$@)
+	rsync -av vendor/mos/anax-flat/example/dbwebb.se/ ./
+
+
+
 # target: site-update         - Make composer update and copy latest files.
 .PHONY: site-update
 site-update:
