@@ -108,7 +108,7 @@ site-build: cimage-create
 .PHONY: site-build-dbwebb
 site-build-dbwebb: site-build
 	@$(call HELPTEXT,$@)
-	rsync -av vendor/mos/anax-flat/example/dbwebb.se/ ./
+	rsync -a vendor/mos/anax-flat/example/dbwebb.se/ ./
 
 
 
