@@ -70,9 +70,9 @@ clean-cache:
 define CIMAGE_CONF
 <?php
 return [
-	'mode'         => 'development',
-	'image_path'   =>  __DIR__ . '/../img/',
-	'cache_path'   =>  __DIR__ . '/../../cache/cimage/',
+    'mode'         => 'development',
+    'image_path'   =>  __DIR__ . '/../img/',
+    'cache_path'   =>  __DIR__ . '/../../cache/cimage/',
 ];
 endef
 export CIMAGE_CONF
