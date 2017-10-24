@@ -14,7 +14,7 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/mosbth/anax-flat/issues"
+        "issues": "https://github.com/canax/anax-flat/issues"
     },
     "require": {
         "mos/anax": "^2.5",
@@ -25,10 +25,5 @@
     "suggest": {
         "ext-yaml": "*",
         "mustangostang/spyc": "^0.6"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
     }
 }

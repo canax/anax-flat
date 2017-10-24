@@ -4,25 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "46fabd55d99367551f389f7bb3720106",
-    "content-hash": "fa8245428f2880faeba4f8125a1b1356",
+    "content-hash": "54ff515761a4a92497c48c1e65a72287",
     "packages": [
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.8.0",
+            "version": "v4.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2"
+                "reference": "95e1bae3182efc0f3422896a3236e991049dac69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
-                "reference": "d0c392f77d2f2a3dcf7fcb79e2a1e2b8804e75b2",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/95e1bae3182efc0f3422896a3236e991049dac69",
+                "reference": "95e1bae3182efc0f3422896a3236e991049dac69",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -49,7 +51,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2016-07-16 12:58:58"
+            "time": "2017-06-03T02:28:16+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -100,7 +102,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2015-12-24 01:37:31"
+            "time": "2015-12-24T01:37:31+00:00"
         },
         {
             "name": "michelf/php-smartypants",
@@ -155,20 +157,20 @@
                 "typographer",
                 "typography"
             ],
-            "time": "2016-10-10 18:14:08"
+            "time": "2016-10-10T18:14:08+00:00"
         },
         {
             "name": "mos/anax",
-            "version": "v2.5.20",
+            "version": "v2.5.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mosbth/anax.git",
-                "reference": "748128a132ef49ed743c1ddbeff8cf7c705c4e07"
+                "reference": "1732a97185efac8b5d2e185229a1a7270f6f153e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mosbth/anax/zipball/748128a132ef49ed743c1ddbeff8cf7c705c4e07",
-                "reference": "748128a132ef49ed743c1ddbeff8cf7c705c4e07",
+                "url": "https://api.github.com/repos/mosbth/anax/zipball/1732a97185efac8b5d2e185229a1a7270f6f153e",
+                "reference": "1732a97185efac8b5d2e185229a1a7270f6f153e",
                 "shasum": ""
             },
             "require": {
@@ -209,20 +211,20 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2016-11-07 11:04:26"
+            "time": "2017-10-18T15:21:34+00:00"
         },
         {
             "name": "mos/cimage",
-            "version": "v0.7.18",
+            "version": "v0.7.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mosbth/cimage.git",
-                "reference": "8001f72a1ac8de2b7c80b711b9f8d16eb97fd22e"
+                "reference": "f9604518e478a5097f29f991b61ba8ee36e7e5ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mosbth/cimage/zipball/8001f72a1ac8de2b7c80b711b9f8d16eb97fd22e",
-                "reference": "8001f72a1ac8de2b7c80b711b9f8d16eb97fd22e",
+                "url": "https://api.github.com/repos/mosbth/cimage/zipball/f9604518e478a5097f29f991b61ba8ee36e7e5ba",
+                "reference": "f9604518e478a5097f29f991b61ba8ee36e7e5ba",
                 "shasum": ""
             },
             "require": {
@@ -230,7 +232,9 @@
                 "php": ">=5.3"
             },
             "suggest": {
-                "ext-exif": "*"
+                "ext-curl": "*",
+                "ext-exif": "*",
+                "ext-imagick": "*"
             },
             "type": "library",
             "autoload": {
@@ -267,20 +271,20 @@
                 "image",
                 "imageprocessing"
             ],
-            "time": "2016-08-09 11:27:46"
+            "time": "2017-03-30T22:47:55+00:00"
         },
         {
             "name": "mos/ctextfilter",
-            "version": "v1.2.16",
+            "version": "v1.2.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mosbth/ctextfilter.git",
-                "reference": "4c5b2bd3f76798665e2dc7207281cb4882098692"
+                "reference": "2a5a24ef9956b85cfcac80dbde8707f1eeb1a4bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mosbth/ctextfilter/zipball/4c5b2bd3f76798665e2dc7207281cb4882098692",
-                "reference": "4c5b2bd3f76798665e2dc7207281cb4882098692",
+                "url": "https://api.github.com/repos/mosbth/ctextfilter/zipball/2a5a24ef9956b85cfcac80dbde8707f1eeb1a4bd",
+                "reference": "2a5a24ef9956b85cfcac80dbde8707f1eeb1a4bd",
                 "shasum": ""
             },
             "require": {
@@ -330,7 +334,7 @@
                 "markdown",
                 "shortcode"
             ],
-            "time": "2016-10-31 12:22:27"
+            "time": "2017-10-02T10:22:33+00:00"
         },
         {
             "name": "scrivo/highlight.php",
@@ -364,29 +368,35 @@
                 "highlight.php",
                 "syntax"
             ],
-            "time": "2016-01-01 14:08:00"
+            "time": "2016-01-01T14:08:00+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.1.6",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "7ff51b06c6c3d5cc6686df69004a42c69df09e27"
+                "reference": "8c7bf1e7d5d6b05a690b715729cb4cd0c0a99c46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/7ff51b06c6c3d5cc6686df69004a42c69df09e27",
-                "reference": "7ff51b06c6c3d5cc6686df69004a42c69df09e27",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/8c7bf1e7d5d6b05a690b715729cb4cd0c0a99c46",
+                "reference": "8c7bf1e7d5d6b05a690b715729cb4cd0c0a99c46",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": "^5.5.9|>=7.0.8"
+            },
+            "require-dev": {
+                "symfony/console": "~2.8|~3.0"
+            },
+            "suggest": {
+                "symfony/console": "For validating YAML files using the lint command"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -413,7 +423,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-10-24 18:41:13"
+            "time": "2017-10-05T14:43:42+00:00"
         }
     ],
     "packages-dev": [],
