@@ -152,3 +152,11 @@ less-lint: less
 	$(NPMBIN)/lessc --lint $(LESS_OPTIONS) $(LESS) > build/lint/style.less
 	- $(NPMBIN)/csslint build/css/style.css > build/lint/style.css
 	ls -l build/lint/
+
+
+
+# target: theme              - Do make in theme/ subfolder.
+.PHONY: theme
+theme:
+	@$(call HELPTEXT,$@)
+	$(MAKE) -C theme less-install
