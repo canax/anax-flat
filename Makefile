@@ -155,7 +155,7 @@ less-lint: less
 
 
 
-# target: theme              - Do make in theme/ subfolder.
+# target: theme               - Do make in theme/ subfolder.
 .PHONY: theme
 theme:
 	@$(call HELPTEXT,$@)
