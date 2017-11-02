@@ -66,6 +66,19 @@ site-update:
 	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
 	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
+	@/bin/echo -e "$(ACTION)Create/Update the directory for the cache items$(NO_COLOR)"
+	install -d -m 777 cache/cimage cache/anax
+
+
+
+# target: clean-cache         - Make composer update and copy latest files.
+.PHONY: clean-cache
+clean-cache:
+	@$(call HELPTEXT,$@)
+	@/bin/echo -e "$(ACTION)Create/Update the directory for the cache items$(NO_COLOR)"
+	rm -rf cache/*/*
+	install -d -m 777 cache/cimage cache/anax
+
 
 
 # target: prepare-build       - Clear and recreate the build directory.
