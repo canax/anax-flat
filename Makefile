@@ -71,7 +71,7 @@ site-update:
 
 
 
-# target: clean-cache         - Make composer update and copy latest files.
+# target: clean-cache         - Clear all cache files and set mode on cache dirs.
 .PHONY: clean-cache
 clean-cache:
 	@$(call HELPTEXT,$@)
