@@ -79,7 +79,7 @@ site-update:
 	composer update
 
 	@$(ECHO) "$(ACTION)Copy Makefile$(NO_COLOR)"
-	rsync -av vendor/mos/anax-flat/Makefile
+	rsync -av vendor/mos/anax-flat/Makefile .
 
 	@$(ECHO) "$(ACTION)Copy from CImage$(NO_COLOR)"
 	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
