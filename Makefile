@@ -75,7 +75,6 @@ site-update:
 .PHONY: clean-cache
 clean-cache:
 	@$(call HELPTEXT,$@)
-	@/bin/echo -e "$(ACTION)Create/Update the directory for the cache items$(NO_COLOR)"
 	rm -rf cache/*/*
 	install -d -m 777 cache/cimage cache/anax
 
