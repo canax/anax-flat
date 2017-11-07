@@ -2,9 +2,10 @@ Revision history
 =======================================
 
 
-v1.1.9* (2017-11-07)
+v1.1.9 (2017-11-07)
 ---------------------------------------
 
+* Makefile remove target test.
 * Cleanup Makefile all using ECHO.
 
 

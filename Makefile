@@ -35,9 +35,9 @@ CHECK_VERSION = printf "%-15s %-10s %s\n" "`basename $(1)`" "`$(1) --version $(2
 .PHONY:  help
 help:
 	@$(call HELPTEXT,$@)
-	@ECHO "Usage:"
-	@ECHO " make [target] ..."
-	@ECHO "target:"
+	@$(ECHO) "Usage:"
+	@$(ECHO) " make [target] ..."
+	@$(ECHO) "target:"
 	@egrep "^# target:" Makefile | sed 's/# target: / /g'
 
 
@@ -56,18 +56,18 @@ clean-cache:
 site-build:
 	@$(call HELPTEXT,$@)
 
-	@ECHO "$(ACTION)Copy from anax-flat$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Copy from anax-flat$(NO_COLOR)"
 	rsync -a vendor/mos/anax-flat/htdocs/ htdocs/
 	rsync -a vendor/mos/anax-flat/config/ config/
 	rsync -a vendor/mos/anax-flat/content/ content/
 	rsync -a vendor/mos/anax-flat/view/ view/
 
-	@ECHO "$(ACTION)Copy from CImage$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Copy from CImage$(NO_COLOR)"
 	install -d htdocs/cimage
 	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
 	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
-	@ECHO "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Create the directory for the cache items$(NO_COLOR)"
 	install -d -m 777 cache/cimage cache/anax
 
 
@@ -78,14 +78,14 @@ site-update:
 	@$(call HELPTEXT,$@)
 	composer update
 
-	@ECHO "$(ACTION)Copy Makefile$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Copy Makefile$(NO_COLOR)"
 	rsync -av vendor/mos/anax-flat/Makefile
 
-	@ECHO "$(ACTION)Copy from CImage$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Copy from CImage$(NO_COLOR)"
 	rsync -a vendor/mos/cimage/webroot/imgd.php htdocs/cimage/imgd.php
 	rsync -a vendor/mos/cimage/icc/ htdocs/cimage/icc/
 
-	@ECHO "$(ACTION)Create/Update the directory for the cache items$(NO_COLOR)"
+	@$(ECHO) "$(ACTION)Create/Update the directory for the cache items$(NO_COLOR)"
 	install -d -m 777 cache/cimage cache/anax
 
 
@@ -94,12 +94,12 @@ site-update:
 .PHONY: theme
 theme:
 	@$(call HELPTEXT,$@)
-	$(MAKE) -C theme less-install
+	[ ! -d theme ] || $(MAKE) -C theme less-install
 
 
 
-# target: test                - Run tests in theme/ subfolder.
-.PHONY: test
-test:
-	@$(call HELPTEXT,$@)
-	[ ! -d theme ] || $(MAKE) -C theme test
+# # target: test                - Run tests.
+# .PHONY: test
+# test:
+# 	@$(call HELPTEXT,$@)
+# 	[ ! -d theme ] || $(MAKE) -C theme test
