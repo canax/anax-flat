@@ -52,7 +52,7 @@ fi
 
 composer require mos/anax-flat
 cp vendor/mos/anax-flat/Makefile .
-make site-build-dbwebb
+make site-build
 
 $ECHO "$MSG_DONE installing Anax Flat."
 
